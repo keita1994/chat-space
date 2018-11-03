@@ -45,7 +45,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|primary_key: true|
-|name|null: false|
+|name|integer|null: false|
 
 ### Association
 - has_many :users, through: :members
