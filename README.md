@@ -28,28 +28,26 @@ Things you may want to cover:
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|primary_key: true|
-|name|string|null: false|
+|name|string|null: false, index: true|
 |email|string|null: false, unique: true|
 |password|string|null: false|
 
 ### Association
-- has_many :groups, through: :members
 - has_many :members
+- has_many :groups, through: :members
 - has_many :messages
 
 
 
 
-## groupテーブル
+## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|primary_key: true|
 |name|integer|null: false|
 
 ### Association
-- has_many :users, through: :members
 - has_many :members
+- has_many :users, through: :members
 - accepts_nested_attributes_for :members
 - has_many :messages
 
@@ -59,8 +57,8 @@ Things you may want to cover:
 ## membersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+|group_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :group
@@ -74,8 +72,8 @@ Things you may want to cover:
 |------|----|-------|
 |body|text||
 |image|string||
-|group_id|integer|null: false, foreign_key: true|
-|user_id|integer|null: false, foreign_key: true|
+|group_id|references|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :group
