@@ -1,7 +1,7 @@
 #head {
-  background-color: #38AEF0;
+  background-color: $aquaColor;
   height: 25px;
-  color: white;
+  color: $white;
   text-align: center;
   text-height: 25px;
 }
@@ -11,31 +11,19 @@
   width: 100vw;
   min-height: calc(100vh - 25px);
 
-
-  display: flex;
-  align-items: flex-start; /*上（左）揃え*/
-  align-items: flex-end;   /*下（右）揃え*/
-  align-items: center;     /*中央揃え*/
-  align-items: baseline;   /*ベースラインを揃える*/
-  align-items: stretch;    /*全ての要素の高さを揃える*/
-
-  // mixinの活用
-  &:after {
-    content: '';
-    display: block;
-    clear: both;
-  }
+  @include justify-contents-align();
+  @include clearfix();
 
   .side-content {
     float: left;
     min-height: calc(100vh - 25px);
     width: 300px;
-    background-color: #253141;
+    background-color: #2f3e51;
 
     &__user-bar {
       height: 110px;
-      background-color: #2f3e51;
-      color: #FFFFFF;
+      background-color: #253141;
+      color: $white;
       font-weight: bold;
       line-height: 110px;
       padding: 0 20px;
@@ -62,12 +50,12 @@
       padding: 0px 20px 40px;
       &__group-name {
         font-size: 15px;
-        color: #FFFFFF;
+        color: $white;
         margin-bottom: 5px;
       }
       &__newest-message {
         font-size: 11px;
-        color: #FFFFFF;
+        color: $white;
       }
     }
   }
@@ -83,11 +71,7 @@
       border-bottom: solid 1px #eeeeee;
       padding: 0 40px;
 
-      &:after {
-        content: '';
-        display: block;
-        clear: both;
-      }
+      @include clearfix();
 
       &__left-content {
         float: left;
@@ -102,7 +86,7 @@
         }
         & ul {
           font-size: 12px;
-          color: #999999;
+          color: $subColor;
           li {
             display: inline-block;
           }
@@ -114,14 +98,14 @@
         height: 40px;
         margin-top: 28px;
         padding: 0 20px;
-        border: solid 2px #38AEF0;
+        border: solid 2px $aquaColor;
         line-height: 40px;
-        color: #38AEF0;
+        color: $aquaColor;
       }
     }
 
     &__message-history {
-      background-color: whitesmoke;
+      background-color: #AAAAAA;
       min-height: calc(100vh - 25px - 20vh);
       padding: 46px 40px 0;
       &__message-box {
@@ -130,16 +114,16 @@
         &__name {
           font-size: 16px;
           font-weight: bold;
-          color: #434A54
+          color: $baseColor
         }
         &__created_at{
           margin-left: 10px;
           font-size: 12px;
-          color: #999999;
+          color: $subColor;
         }
         &__text{
           font-size: 14px;
-          color: #434A54;
+          color: $baseColor;
           margin-top: 10px;
         }
       }
@@ -160,6 +144,8 @@
         padding-left: 10px;
         background-color: white;
         border: none;
+        font-size:16px;
+        color:$baseColor;
       }
 
       &__image {
@@ -178,7 +164,7 @@
         float: right;
         height: 50px;
         width: 100px;
-        background-color: #38AEF0;
+        background-color: $aquaColor;
         margin-left: 15px;
         text-align: center;
         text-height: 50px;
