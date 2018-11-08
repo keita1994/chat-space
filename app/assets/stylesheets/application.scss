@@ -1,9 +1,10 @@
-@import "./variable";
-@import "./clearfix";
-@import "./justify-contents-align";
+@import "config/colors";
+@import "mixin/clearfix";
+@import "mixin/justify-contents-align";
 @import "./font-awesome";
 @import "./reset";
-@import "./index";
-@import "./user"
+@import "modules/index";
+@import "modules/flash";
+@import "modules/user"
 
 
