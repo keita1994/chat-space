@@ -1,0 +1,8 @@
+@mixin justify-contents-align() {
+  display: flex;
+  align-items: flex-start;
+  align-items: flex-end;
+  align-items: center;
+  align-items: baseline;
+  align-items: stretch;
+}
