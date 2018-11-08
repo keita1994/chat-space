@@ -6,12 +6,13 @@
   .side-content
     .side-content__user-bar
       %ul
-        %li.user-name User Name
+        %li.user-name
+          = current_user.name
         %li
           %a{:href => "https://www.google.co.jp/"}
             %i.fa.fa-edit
         %li
-          %a{:href => "https://www.google.co.jp/"}
+          = link_to edit_user_path(current_user) do
             %i.fa.fa-cog
 
     .side-content__group-bar
