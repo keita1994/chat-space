@@ -1,0 +1,189 @@
+#head {
+  background-color: #38AEF0;
+  height: 25px;
+  color: white;
+  text-align: center;
+  text-height: 25px;
+}
+
+
+.contents {
+  width: 100vw;
+  min-height: calc(100vh - 25px);
+
+
+  display: flex;
+  align-items: flex-start; /*上（左）揃え*/
+  align-items: flex-end;   /*下（右）揃え*/
+  align-items: center;     /*中央揃え*/
+  align-items: baseline;   /*ベースラインを揃える*/
+  align-items: stretch;    /*全ての要素の高さを揃える*/
+
+  // mixinの活用
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  .side-content {
+    float: left;
+    min-height: calc(100vh - 25px);
+    width: 300px;
+    background-color: #253141;
+
+    &__user-bar {
+      height: 110px;
+      background-color: #2f3e51;
+      color: #FFFFFF;
+      font-weight: bold;
+      line-height: 110px;
+      padding: 0 20px;
+      margin-bottom:20px;
+      font-size: 16px;
+      position: relative;
+      ul {
+        text-align: right;
+        li{
+          display: inline-block;
+          a {
+            color: white;
+          }
+        }
+        .user-name{
+        position: absolute;
+        left: 0px;
+        padding-left: 25px;
+        }
+      }
+    }
+
+    &__group-bar {
+      padding: 0px 20px 40px;
+      &__group-name {
+        font-size: 15px;
+        color: #FFFFFF;
+        margin-bottom: 5px;
+      }
+      &__newest-message {
+        font-size: 11px;
+        color: #FFFFFF;
+      }
+    }
+  }
+
+  .main-content {
+    float: left;
+    position: relative;
+    width: calc(100vw - 300px);
+    min-height: calc(100vh - 25px);
+
+
+    &__head-bar {
+      border-bottom: solid 1px #eeeeee;
+      padding: 0 40px;
+
+      &:after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+
+      &__left-content {
+        float: left;
+        padding-bottom: 10px;
+
+
+
+        & p {
+          font-size: 20px;
+          color: #333333;
+          margin: 35px 0 15px;
+        }
+        & ul {
+          font-size: 12px;
+          color: #999999;
+          li {
+            display: inline-block;
+          }
+        }
+      }
+
+      &__edit-btn {
+        float: right;
+        height: 40px;
+        margin-top: 28px;
+        padding: 0 20px;
+        border: solid 2px #38AEF0;
+        line-height: 40px;
+        color: #38AEF0;
+      }
+    }
+
+    &__message-history {
+      background-color: whitesmoke;
+      min-height: calc(100vh - 25px - 20vh);
+      padding: 46px 40px 0;
+      &__message-box {
+        margin-bottom: 40px;
+        height: 100px;
+        &__name {
+          font-size: 16px;
+          font-weight: bold;
+          color: #434A54
+        }
+        &__created_at{
+          margin-left: 10px;
+          font-size: 12px;
+          color: #999999;
+        }
+        &__text{
+          font-size: 14px;
+          color: #434A54;
+          margin-top: 10px;
+        }
+      }
+    }
+
+    &__message-submit-box {
+      background-color: #CCCCCC ;
+      height: 50px;
+      width: calc(100vw - 300px - 80px);
+      position: absolute;
+      bottom: 0;
+      padding: 20px 40px;
+
+      &__textarea {
+        float: left;
+        height: 50px;
+        width: calc(100vw - 300px - 80px - 155px);
+        padding-left: 10px;
+        background-color: white;
+        border: none;
+      }
+
+      &__image {
+        float: left;
+        height: 50px;
+        width: 20px;
+        background-color: white;
+        border: none;
+        line-height: 50px;
+        text-align: right;
+        padding-right: 10px;
+
+      }
+
+      &__send {
+        float: right;
+        height: 50px;
+        width: 100px;
+        background-color: #38AEF0;
+        margin-left: 15px;
+        text-align: center;
+        text-height: 50px;
+        margin-left: 15px;
+      }
+    }
+  }
+}
