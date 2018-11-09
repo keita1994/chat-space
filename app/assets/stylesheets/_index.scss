@@ -1,0 +1,166 @@
+.contents {
+  width: 100vw;
+  min-height: calc(100vh - 25px);
+
+  @include justify-contents-align();
+  @include clearfix();
+
+  .side-content {
+    float: left;
+    min-height: calc(100vh - 25px);
+    width: 300px;
+    background-color: $side_blue_light;
+
+    &__user-bar {
+      height: 110px;
+      background-color: $side_blue_dark;
+      color: $white;
+      font-weight: bold;
+      line-height: 110px;
+      padding: 0 20px;
+      margin-bottom:20px;
+      font-size: 16px;
+      position: relative;
+      ul {
+        text-align: right;
+        li{
+          display: inline-block;
+          a {
+            color: white;
+          }
+        }
+        .user-name{
+        position: absolute;
+        left: 0px;
+        padding-left: 25px;
+        }
+      }
+    }
+
+    &__group-bar {
+      padding: 0px 20px 40px;
+      &__group-name {
+        font-size: 15px;
+        color: $white;
+        margin-bottom: 5px;
+      }
+      &__newest-message {
+        font-size: 11px;
+        color: $white;
+      }
+    }
+  }
+
+  .main-content {
+    float: left;
+    position: relative;
+    width: calc(100vw - 300px);
+    min-height: calc(100vh - 25px);
+
+
+    &__head-bar {
+      border-bottom: solid 1px #eeeeee;
+      padding: 0 40px;
+
+      @include clearfix();
+
+      &__left-content {
+        float: left;
+        padding-bottom: 10px;
+
+
+
+        & p {
+          font-size: 20px;
+          color: #333333;
+          margin: 35px 0 15px;
+        }
+        & ul {
+          font-size: 12px;
+          color: $light_gray;
+          li {
+            display: inline-block;
+          }
+        }
+      }
+
+      &__edit-btn {
+        float: right;
+        height: 40px;
+        margin-top: 28px;
+        padding: 0 20px;
+        border: solid 2px $light_blue;
+        line-height: 40px;
+        color: $light_blue;
+      }
+    }
+
+    &__message-history {
+      background-color: #AAAAAA;
+      min-height: calc(100vh - 25px - 20vh);
+      padding: 46px 40px 0;
+      &__message-box {
+        margin-bottom: 40px;
+        height: 100px;
+        &__name {
+          font-size: 16px;
+          font-weight: bold;
+          color: $black
+        }
+        &__created_at{
+          margin-left: 10px;
+          font-size: 12px;
+          color: light_gray;
+        }
+        &__text{
+          font-size: 14px;
+          color: $black;
+          margin-top: 10px;
+        }
+      }
+    }
+
+    &__message-submit-box {
+      background-color: #CCCCCC ;
+      height: 50px;
+      width: calc(100vw - 300px - 80px);
+      position: absolute;
+      bottom: 0;
+      padding: 20px 40px;
+
+      &__textarea {
+        float: left;
+        height: 50px;
+        width: calc(100vw - 300px - 80px - 155px);
+        padding-left: 10px;
+        background-color: white;
+        border: none;
+        font-size:16px;
+        color:$blackr;
+      }
+
+      &__image {
+        float: left;
+        height: 50px;
+        width: 20px;
+        background-color: white;
+        border: none;
+        line-height: 50px;
+        text-align: right;
+        padding-right: 10px;
+
+      }
+
+      &__send {
+        float: right;
+        height: 50px;
+        width: 100px;
+        background-color: $light_blue;
+        margin-left: 15px;
+        text-align: center;
+        text-height: 50px;
+        margin-left: 15px;
+      }
+    }
+  }
+}
