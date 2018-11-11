@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
 
   def index
+    # @message = Message.new
   end
 
   def new
@@ -18,12 +19,12 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    @group = Group.find(params[:id])
+    @group = Group.find(params[:group_id])
   end
 
 
   def update
-    @group = Group.find(params[:id])
+    # @group = Group.find(params[:group_id])
     if @group.update(group_params)
       redirect_to group_messages_path(@group), notice: 'グループを編集しました'
     else
@@ -32,7 +33,6 @@ class GroupsController < ApplicationController
   end
 
   private
-
   def group_params
     params.require(:group).permit(:name, { :user_ids => [] })
   end

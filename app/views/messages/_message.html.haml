@@ -1,0 +1,10 @@
+.main-content__message-history__message-box
+  %ul.message-box-contents
+    %l.main-content__message-history__message-box__name
+      = message.user.name
+    %l.main-content__message-history__message-box__created_at
+      / = format_posted_time(message.created_at)
+  -if message.content.present?
+    %p.main-content__message-history__message-box__text
+      = message.content
+  = image_tag message.image.url, class: 'lower-message__image' if message.image.present?

@@ -1,0 +1,19 @@
+.side-content
+  .side-content__user-bar
+    %ul
+      %li.user-name
+        = current_user.name
+      %li
+        = link_to new_group_path do
+          %i.fa.fa-edit
+      %li
+        = link_to edit_user_path(current_user) do
+          %i.fa.fa-cog
+
+  - current_user.groups.each do |group|
+    .side-content__group-bar
+      = link_to group_messages_path(group) do
+        .side-content__group-bar__group-name
+          = group.name
+        %p.side-content__group-bar__newest-message
+          = group.show_last_message
