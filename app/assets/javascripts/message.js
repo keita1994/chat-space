@@ -1,24 +1,25 @@
 $(function() {
   function buildHTML(message) {
-    var html =   `<ul class="upper-message">
-                    <li class="name">
-                      ${message.name}
-                    </li>
-                    <li class="created_at">
-                      ${message.created_at}
-                    </li>
-                  <div class="lower-message__content">
-                      ${message.content}
-                      ${message.image}
-                  </div>`
+    var imgge = message.image? `<img class="lower-message__image" src="${message.imag}">}` : "";
+    var html =
+      `<ul class="upper-message">
+        <li class="name">
+          ${message.name}
+        </li>
+        <li class="created_at">
+          ${message.created_at}
+        </li>
+      <div class="lower-message__content">
+        <p>${message.content}</p>
+        <div>${message.image}</div>
+      </div>`
+
     return html;
   }
 
   $('#new_message').on('submit', function(e){
     e.preventDefault();
-    var $form = $(this);
-    formData = new FormData(this);
-
+    var formData = new FormData(this);
     $.ajax({
       url: './messages',
       type: "POST",
