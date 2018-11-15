@@ -1,13 +1,13 @@
 .contents {
   width: 100vw;
-  min-height: calc(100vh - 25px);
+  min-height: calc(100vh);
 
   @include justify-contents-align();
   @include clearfix();
 
   .side-content {
     float: left;
-    min-height: calc(100vh - 25px);
+    min-height: calc(100vh);
     width: 300px;
     background-color: $side_blue_light;
 
@@ -55,7 +55,7 @@
     float: left;
     position: relative;
     width: calc(100vw - 300px);
-    min-height: calc(100vh - 25px);
+    min-height: calc(100vh);
 
 
     &__head-bar {
@@ -97,28 +97,42 @@
 
     &__message-history {
       background-color: #AAAAAA;
-      min-height: calc(100vh - 25px - 20vh);
-      padding: 46px 40px 0;
+      height: calc(100vh - 45px - 20vh);
+      padding: 46px 40px 40px;
+      overflow: scroll;
+
       &__message-box {
         margin-bottom: 40px;
-        height: 100px;
-        &__name {
-          font-size: 16px;
-          font-weight: bold;
-          color: $black
+        min-height: 100px;
+
+
+        .upper-message
+          .name {
+            font-size: 16px;
+            font-weight: bold;
+            color: $black
+          }
+          .created_at{
+            margin-left: 10px;
+            font-size: 12px;
+            color: light_gray;
+          }
+          li {
+            display: inline-block;
+          }
         }
-        &__created_at{
-          margin-left: 10px;
-          font-size: 12px;
-          color: light_gray;
-        }
-        &__text{
-          font-size: 14px;
-          color: $black;
+        .lower-message {
           margin-top: 10px;
+          &__content {
+              font-size: 14px;
+              color: $black;
+          }
+          &__image {
+              height: 100px;
+              width: 150px;
+          }
         }
       }
-    }
 
     &__message-submit-box {
       background-color: #CCCCCC ;
@@ -136,7 +150,7 @@
         background-color: white;
         border: none;
         font-size:16px;
-        color:$blackr;
+        color:$black;
       }
 
       &__image {

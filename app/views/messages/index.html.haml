@@ -21,7 +21,7 @@
 
     .main-content__message-submit-box
       .form
-        = form_for [@group, @message] do |f|
+        = form_for [@group, @message], html: { id: 'new_message'} do |f|
           = f.text_field :content, class: 'main-content__message-submit-box__textarea', placeholder: 'type a message'
           = f.label :image, class: 'main-content__message-submit-box__image' do
             = fa_icon 'picture-o', class: 'icon'
