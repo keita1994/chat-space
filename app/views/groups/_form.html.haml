@@ -12,21 +12,25 @@
       = f.text_field :name, class: 'chat__group_name chat-group-form__input', placeholder: 'グループ名を入力してください'
 
   .chat-group-form__field.clearfix
-
-
     .chat-group-form__field--left
       = f.label :チャットメンバーを追加, class: 'chat-group-form__label'
     .chat-group-form__field--right
       .chat-group-form__search.clearfix
-        %input{type:'text', id:'user-search-field', class: 'chat-group-form__input', placeholder: "追加したいユーザー名を入力してください", type:"text"}
+        %input#user-search-field.chat-group-form__input{placeholder: "追加したいユーザー名を入力してください", type: "text"}/
       #user-search-result
 
-    #chat-group-users
-      - @group.users.each do |user|
-        #chat-group-user-22.chat-group-user.clearfix
-          = f.hidden_field :user_ids, value: user.id, mutiple: true
-          %p.chat-group-user__name
-            = user.name
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+      = f.label :チャットメンバー, class: 'chat-group-form__label'
+    .chat-group-form__field--right
+      #chat-group-users
+        - @group.users.each do |user|
+          #chat-group-user-22.chat-group-user.clearfix
+            = f.hidden_field :user_ids, value: user.id, mutiple: true
+            %p.chat-group-user__name
+              = user.name
+            %a.user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn
+              削除
 
 
 
