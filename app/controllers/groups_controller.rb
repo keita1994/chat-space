@@ -1,5 +1,7 @@
 class GroupsController < ApplicationController
 
+  before_action :set_group, except: [:index, :new, :create]
+
   def index
     # @message = Message.new
   end
@@ -19,7 +21,6 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    @group = Group.find(params[:group_id])
   end
 
 

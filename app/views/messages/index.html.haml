@@ -13,7 +13,9 @@
             %li
               = user.name
 
-      .main-content__head-bar__edit-btn Edit
+      .main-content__head-bar__edit-btn
+        = link_to edit_group_path(@group) do
+          Edit
 
     .main-content__message-history
       = render @messages
