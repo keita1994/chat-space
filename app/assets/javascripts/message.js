@@ -56,7 +56,14 @@ $(function() {
   function update(){
   var messageId = $('.main-content__message-history__message-box').last().data('message-id')
   var url = window.location.href
-  console.log(messageId)
 
+    $.ajax ({
+      url: url,
+      type: 'GET',
+      data: {id : messageId},
+      dataType: 'json',
+    })
   }
+
 });
+
