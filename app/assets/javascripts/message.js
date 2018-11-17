@@ -48,14 +48,14 @@ $(function() {
     })
   })
 
-
+// メッセージ自動更新機能
   $(function(){
     setInterval(update, 5000);
   });
 
   function update(){
-  var messageId = $('.main-content__message-history__message-box').last().data('message-id')
-  var url = window.location.href
+    var messageId = $('.main-content__message-history__message-box').last().data('message-id')
+    var url = window.location.href
 
     $.ajax ({
       url: url,
@@ -63,7 +63,19 @@ $(function() {
       data: {id : messageId},
       dataType: 'json',
     })
-  }
 
+    .done(function(update_messages) {
+      var insertHTML = '';
+      update_messages.forEach(function(update_message){
+        insertHTML += buildHTML(update_message)
+      });
+      $('.main-content__message-history').append(insertHTML)
+      $('.main-content__message-history').animate({scrollTop: $('.main-content__message-history')[0].scrollHeight},'fast');
+    })
+
+    .fail(function(json){
+      alert('自動更新に失敗しました')
+    })
+  }
 });
 
