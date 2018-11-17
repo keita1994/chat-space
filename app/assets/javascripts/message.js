@@ -54,8 +54,9 @@ $(function() {
   });
 
   function update(){
-    var messageId = $('.main-content__message-history__message-box').last().data('message-id')
+    var messageId = $('.main-content__message-history__message-box').last().attr('message-id')
     var url = window.location.href
+    console.log(messageId)
 
     $.ajax ({
       url: url,
@@ -67,10 +68,11 @@ $(function() {
     .done(function(update_messages) {
       var insertHTML = '';
       update_messages.forEach(function(update_message){
-        insertHTML += buildHTML(update_message)
+        if ( update_message.id > messageId)
+          insertHTML += buildHTML(update_message)
+          $('.main-content__message-history').append(insertHTML)
+          $('.main-content__message-history').animate({scrollTop: $('.main-content__message-history')[0].scrollHeight},'fast');
       });
-      $('.main-content__message-history').append(insertHTML)
-      $('.main-content__message-history').animate({scrollTop: $('.main-content__message-history')[0].scrollHeight},'fast');
     })
 
     .fail(function(json){
