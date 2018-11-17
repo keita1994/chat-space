@@ -2,7 +2,7 @@ $(function() {
   function buildHTML(message) {
     var image = message.image.present? `<img class="lower-message__image" src="${message.imag}">}` : "";
     var html =`
-      <div class = "main-content__message-history__message-box">
+      <div class = "main-content__message-history__message-box", message-id= ${message.id} >
         <ul class="upper-message">
           <li class="name">
             ${message.name}
@@ -39,13 +39,24 @@ $(function() {
       $('#message_content').val('')
       $('.main-content__message-history').animate({scrollTop: $('.main-content__message-history')[0].scrollHeight},'fast');
       $('#new_message')[0].reset();
-      $('.main-content__message-submit-box__send').prop('disabled', false);
     })
     .fail(function(){
       alert('error');
     })
     .always(function(){
+      $('.main-content__message-submit-box__send').prop('disabled', false);
     })
   })
-});
 
+
+  $(function(){
+    setInterval(update, 5000);
+  });
+
+  function update(){
+  var messageId = $('.main-content__message-history__message-box').last().data('message-id')
+  var url = window.location.href
+  console.log(messageId)
+
+  }
+});
