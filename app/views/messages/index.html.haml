@@ -6,7 +6,8 @@
   .main-content
     .main-content__head-bar
       .main-content__head-bar__left-content
-        %P Sampleグループ
+        %P
+          = @group.name
         %ul.main-content__head-bar__left-content__group-members
           %li Member：
           - @users.each do |user|

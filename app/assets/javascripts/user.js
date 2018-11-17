@@ -53,8 +53,6 @@ function appendAddUser( user_id, user_name) {
   $("#user-search-result").on('click', ".chat-group-user__btn--add", function() {
     var userId = $(this).attr("data-user-id");
     var userName = $(this).attr("data-user-name");
-    console.log(userId);
-    console.log(userName)
     appendAddUser(userId, userName);
     $(this).parent().remove();
   })
