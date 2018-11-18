@@ -1,9 +1,9 @@
-.main-content__message-history__message-box
+.main-content__message-history__message-box{ "message-id": "#{message.id}"}
   %ul.upper-message
     %li.name
       = message.user.name
     %li.created_at
-      = message.created_at
+      = message.created_at.strftime("%Y-%m-%d%H:%M")
   .lower-message
     -if message.content.present?
       %p.lower-message__content

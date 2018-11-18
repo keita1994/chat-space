@@ -10,7 +10,7 @@
           = @group.name
         %ul.main-content__head-bar__left-content__group-members
           %li Member：
-          - @users.each do |user|
+          - @group.users.each do |user|
             %li
               = user.name
 
