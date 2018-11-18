@@ -52,11 +52,15 @@ $(function() {
   var interval = setInterval(update, 5000);
 
   function update(){
-    var messageId = $('.main-content__message-history__message-box').last().attr('message-id')
-    var url = window.location.href
-    console.log(messageId)
-
     if (window.location.href.match(/\/groups\/\d+\/messages/)) {
+      if($('.main-content__message-history__message-box')[0]){
+        var messageId = $('.main-content__message-history__message-box').last().attr('message-id')
+      }else{
+        var messageId = 0
+      }
+
+    var url = window.location.href
+
 
       $.ajax ({
         url: url,
@@ -68,11 +72,10 @@ $(function() {
       .done(function(update_messages) {
         var insertHTML = '';
         update_messages.forEach(function(update_message){
-          if ( update_message.id > messageId)
             insertHTML += buildHTML(update_message)
+        });
             $('.main-content__message-history').append(insertHTML)
             $('.main-content__message-history').animate({scrollTop: $('.main-content__message-history')[0].scrollHeight},'fast');
-        });
       })
 
       .fail(function(json){
