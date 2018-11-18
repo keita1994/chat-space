@@ -1,4 +1,7 @@
 $(function() {
+
+  var messages_history = $(".main-content__message-history");
+
   function buildHTML(message) {
     var image = message.image.present? `<img class="lower-message__image" src="${message.imag}">}` : "";
     var html =`
@@ -8,7 +11,7 @@ $(function() {
             ${message.name}
           </li>
           <li class="created_at">
-            ${message.created_at}
+            ${message.date}
           </li>
         <div class="lower-message__content">
           <p>${message.content}</p>
@@ -35,9 +38,9 @@ $(function() {
 
     .done(function(data){
       var html = buildHTML(data);
-      $('.main-content__message-history').append(html)
+      messages_history.append(html)
       $('#message_content').val('')
-      $('.main-content__message-history').animate({scrollTop: $('.main-content__message-history')[0].scrollHeight},'fast');
+      messages_history.animate({scrollTop: messages_history[0].scrollHeight},'fast');
       $('#new_message')[0].reset();
     })
     .fail(function(){
@@ -52,20 +55,17 @@ $(function() {
   var interval = setInterval(update, 5000);
 
   function update(){
-    if (window.location.href.match(/\/groups\/\d+\/messages/)) {
-      if($('.main-content__message-history__message-box')[0]){
-        var messageId = $('.main-content__message-history__message-box').last().attr('message-id')
-      }else{
-        var messageId = 0
-      }
+    if (window.location.href.match(/\/groups\/\d+\/messages/) && ('.main-content__message-history__message-box')[0]){
 
-    var url = window.location.href
+        var lastMessageId = $('.main-content__message-history__message-box:last-child').attr('message-id')
+
+      var url = window.location.href
 
 
       $.ajax ({
         url: url,
         type: 'GET',
-        data: {id : messageId},
+        data: {id : lastMessageId},
         dataType: 'json',
       })
 
@@ -74,13 +74,13 @@ $(function() {
         update_messages.forEach(function(update_message){
             insertHTML += buildHTML(update_message)
         });
-            $('.main-content__message-history').append(insertHTML)
-            $('.main-content__message-history').animate({scrollTop: $('.main-content__message-history')[0].scrollHeight},'fast');
+            messages_history.append(insertHTML)
       })
 
       .fail(function(json){
         alert('自動更新に失敗しました')
       })
+
     } else {
       clearInterval(interval);
     }
