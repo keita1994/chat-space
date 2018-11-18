@@ -55,12 +55,14 @@ $(function() {
   var interval = setInterval(update, 5000);
 
   function update(){
-    if (window.location.href.match(/\/groups\/\d+\/messages/) && ('.main-content__message-history__message-box')[0]){
-
+    if (window.location.href.match(/\/groups\/\d+\/messages/)) {
+      if($('.main-content__message-history__message-box')[0]){
         var lastMessageId = $('.main-content__message-history__message-box:last-child').attr('message-id')
-
+      }else{
+        var lastMessageId = 0
+      }
+      console.log(lastMessageId)
       var url = window.location.href
-
 
       $.ajax ({
         url: url,
@@ -80,10 +82,8 @@ $(function() {
       .fail(function(json){
         alert('自動更新に失敗しました')
       })
-
     } else {
       clearInterval(interval);
     }
   }
 });
-
