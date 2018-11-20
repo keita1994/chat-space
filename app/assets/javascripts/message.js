@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
 
   var messages_history = $(".main-content__message-history");
 
@@ -61,7 +61,6 @@ $(function() {
       }else{
         var lastMessageId = 0
       }
-      console.log(lastMessageId)
       var url = window.location.href
 
       $.ajax ({
