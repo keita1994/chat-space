@@ -26,7 +26,7 @@
         li{
           display: inline-block;
           a {
-            color: white;
+            color: $white;
           }
         }
         .user-name{
@@ -39,6 +39,9 @@
 
     &__group-bar {
       padding: 0px 20px 40px;
+      a {
+        text-decoration: none;
+      }
       &__group-name {
         font-size: 15px;
         color: $white;
@@ -91,7 +94,13 @@
         padding: 0 20px;
         border: solid 2px $light_blue;
         line-height: 40px;
-        color: $light_blue;
+        a{
+          text-decoration: none;
+          p{
+            color: $light_blue;
+          }
+        }
+
       }
     }
 
